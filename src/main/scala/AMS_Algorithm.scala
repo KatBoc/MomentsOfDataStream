@@ -2,9 +2,9 @@ import scala.util.Random
 
 class AMS_Algorithm(k: Int, epsilon: Double, lambda: Double, m: Int = 27333, n: Int = 2579) {
   private val a = k * math.log(1.0/epsilon)
-  private val ll = lambda * lambda
-  private val nn = math.pow(n, 1.0-1.0/k)
-  private val r: Int = ((a / ll) * nn).toInt
+  private val b = lambda * lambda
+  private val c = math.pow(n, 1.0-1.0/k)
+  private val r: Int = ((a / b) * c).toInt
   private val randomPositions: Set[Int] = (1 to r).map(_ => Random.nextInt(m) + 1).toSet
   private val positionIndices = randomPositions.zipWithIndex.toMap
   private val counts: Array[Int] = new Array[Int](r)

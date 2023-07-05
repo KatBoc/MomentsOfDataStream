@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df361959-831e-4147-919f-a560a50c95fd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/AMS_New_Alg.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/AMS_Algorithm.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/AMS_Algorithm.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/AMS_Simplified.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/AMS_Simplified.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/Usage.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Usage.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/justcheckin.sc" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/justcheckin.sc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/WordMoments.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/WordMoments.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

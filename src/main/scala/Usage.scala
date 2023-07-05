@@ -2,7 +2,12 @@ import scala.io.Source
 import scala.util.Random.nextInt
 
 object Usage {
-
+  /**
+   * Converts a text file to a sequence of words.
+   *
+   * @param filePath The path of the file to be converted.
+   * @return         A sequence of words.
+   */
   private def txtFileToSeq(filePath: String): Seq[String] = {
     val fileSource = Source.fromFile(filePath)
     val words = fileSource.mkString.toLowerCase().split("\\W+").filter(_.nonEmpty).toSeq
@@ -10,6 +15,13 @@ object Usage {
     words
   }
 
+  /**
+   * Estimates the k-th frequency moment of a distribution using the simplified AMS Algorithm.
+   *
+   * @param words A sequence of words representing the data stream.
+   * @param k     The order of the frequency moment to be estimated.
+   * @return      The estimated k-th frequency moment of the data stream.
+   */
   private def estimate_AMS_Simplified(words: Seq[String], k: Int): BigInt = {
     val amsS = new AMS_Simplified(words.length)
     words.foreach(amsS.add)
@@ -17,23 +29,48 @@ object Usage {
     kthMomentEstimate
   }
 
+  /**
+   * Estimates the k-th frequency moment of a distribution using the AMS Algorithm.
+   *
+   * @param words   A sequence of words representing the data stream.
+   * @param k       The order of the frequency moment to be estimated.
+   * @param epsilon The probability used in the AMS Algorithm.
+   * @param lambda  The relative error used in the AMS Algorithm.
+   * @return        The estimated k-th frequency moment of the data stream.
+   */
   private def estimate_AMS(words: Seq[String], k: Int, epsilon: Double, lambda: Double): BigInt = {
-    val ams = new AMS_New_Alg(k, epsilon, lambda)
+    val ams = new AMS_Algorithm(k, epsilon, lambda)
     words.foreach(ams.add)
     val kthMomentEstimate = ams.estimateMoment(k)
     kthMomentEstimate
   }
 
+  /**
+   * Calculates the exact k-th frequency moment of a distribution.
+   *
+   * @param k     The order of the frequency moment to be calculated.
+   * @param words A sequence of words representing the data stream.
+   * @return      The exact k-th frequency moment of the data stream.
+   */
   private def ExactMoment(k: Int, words: Seq[String]) = {
     val em = new WordMoments()
     val kth_moment = em.countMoment(k, words)
     kth_moment
   }
+
+  /**
+   * The main function demonstrating the usage of the AMS Algorithm for estimating moments.
+   *
+   * @param args Command line arguments.
+   */
   def main(args: Array[String]): Unit = {
-    val filePath = "C:/Users/KatarzynaBocian(2399/Desktop/BDA/Stream programming/A/Stream_programming_assigments/src/canterbury-corpus-master/large/bible.txt"
+    var filePath = "src/canterbury-corpus-master/canterbury/alice29.txt"
+
+    if(args.length > 0) {filePath = args(0)}
+
     val words = txtFileToSeq(filePath)
 
-    val epsilon = 0.98 // probability
+    val epsilon = 0.01 // probability
     val lambda = 0.01 // relative error
 
     val M1 = ExactMoment(1, words)
